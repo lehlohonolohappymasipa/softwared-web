@@ -27,6 +27,17 @@ This project is configured to export as a fully static site.
 - Build the static site to `out/`: `npm run build` (or `npm run export`)
 - Serve the exported site locally: `npm run start`
 
+## SEO (recommended)
+
+This site generates `robots.txt`, `sitemap.xml`, canonical URLs, and social previews from your site URL.
+
+- Set `NEXT_PUBLIC_SITE_URL` (recommended for production). For this site: `https://softwared.netlify.app`
+- If you deploy as a GitHub Pages project site, set either:
+  - `NEXT_PUBLIC_SITE_URL=https://username.github.io` and `NEXT_PUBLIC_BASE_PATH=/your-repo`, or
+  - `NEXT_PUBLIC_SITE_URL=https://username.github.io/your-repo` (and leave `NEXT_PUBLIC_BASE_PATH` unset)
+
+Netlify: add `NEXT_PUBLIC_SITE_URL` in **Site configuration → Environment variables** so it’s available during build.
+
 ## Deploy to GitHub Pages
 
 This repo is set up to deploy automatically to GitHub Pages via GitHub Actions.
