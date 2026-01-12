@@ -1,0 +1,90 @@
+<svg width="880" height="240" viewBox="60 30 700 210" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="softwared logo: technology shaped for impact">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="blueGradTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4FB6FF"/>
+      <stop offset="100%" stop-color="#0A3A86"/>
+    </linearGradient>
+    <linearGradient id="blueGradBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#56C0FF"/>
+      <stop offset="100%" stop-color="#0A2E6D"/>
+    </linearGradient>
+    <!-- Soft inner shadow for depth (works on both light and dark backgrounds) -->
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="1" result="offOut"/>
+      <feGaussianBlur in="offOut" stdDeviation="1" result="blurOut"/>
+      <feComposite in="SourceGraphic" in2="blurOut" operator="arithmetic" k2="-1" k3="1"/>
+    </filter>
+    <!-- Shared styles -->
+    <style>
+      .keyline { fill: none; stroke: #FFFFFF; stroke-width: 3; }
+      .wordmark { fill: #082567; }
+      .tagline { fill: #3BA0FF; }
+      /* Dark-mode fallback: if background is dark, many UIs invert colors.
+         Keep a stroke around letters to maintain legibility. */
+      .wordmark-outline { fill: #FFFFFF; stroke: #082567; stroke-width: 2; paint-order: stroke fill; }
+      .tagline-outline { fill: #FFFFFF; stroke: #3BA0FF; stroke-width: 1.2; paint-order: stroke fill; }
+    </style>
+  </defs>
+
+  <!-- Ribbon-style S mark -->
+  <g transform="translate(50,32)" filter="url(#innerShadow)">
+    <!-- Upper ribbon -->
+    <path d="M90,18
+             C135,18 165,38 170,65
+             C175,92 150,110 105,118
+             C75,123 55,130 50,150
+             C45,170 65,188 105,196
+             L86,208
+             C40,198 15,176 18,150
+             C21,122 46,105 95,96
+             C125,90 145,78 145,62
+             C145,46 125,32 90,30
+             Z"
+          fill="url(#blueGradTop)"/>
+    <!-- Lower ribbon (overlap) -->
+    <path d="M110,18
+             L128,6
+             C175,16 202,38 198,66
+             C194,93 168,112 118,122
+             C88,128 68,140 68,158
+             C68,176 90,190 128,193
+             C165,196 195,186 208,168
+             L190,156
+             C178,170 150,180 120,178
+             C92,176 77,165 77,153
+             C77,140 92,130 120,124
+             C170,114 198,92 202,64
+             C205,44 194,26 170,14
+             Z"
+          fill="url(#blueGradBottom)"/>
+    <!-- White keyline to lift on dark backgrounds -->
+    <path d="M90,18
+             C135,18 165,38 170,65
+             C175,92 150,110 105,118
+             C75,123 55,130 50,150
+             C45,170 65,188 105,196
+             M110,18
+             L128,6
+             C175,16 202,38 198,66
+             C194,93 168,112 118,122
+             C88,128 68,140 68,158
+             C68,176 90,190 128,193
+             C165,196 195,186 208,168"
+          class="keyline"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(260,110)">
+    <text class="wordmark" x="0" y="0"
+      font-family="Inter, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
+      font-size="74" font-weight="800" letter-spacing="0.5">softwared</text>
+  </g>
+
+  <!-- Tagline -->
+  <g transform="translate(264,155)">
+    <text class="tagline" x="0" y="0"
+      font-family="Inter, SF Pro Text, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
+      font-size="24" font-weight="600" letter-spacing="0.3">technology shaped for impact</text>
+  </g>
+</svg>
