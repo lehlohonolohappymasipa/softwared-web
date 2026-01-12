@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# Optional but recommended: make sure the canonical/sitemap URLs are correct during build.
+[build.environment]
+  NEXT_PUBLIC_SITE_URL = "https://softwared.netlify.app"
+
+# If you later add a custom domain, update NEXT_PUBLIC_SITE_URL accordingly.
