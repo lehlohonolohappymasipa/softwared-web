@@ -8,7 +8,7 @@ export default function Head() {
     "@type": "Organization",
     name: "Softwared",
     url: getAbsoluteUrl("/"),
-    logo: getAbsoluteUrl("/softwared-logo.svg"),
+    logo: getAbsoluteUrl("/softwared_logo.png"),
     description:
       "Custom software development for web applications, mobile applications, e-commerce solutions, and Flutter apps.",
     knowsAbout: [

@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/softwared-logo.svg",
+        url: "/softwared_logo.png",
         width: 440,
         height: 120,
         alt: "Softwared",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "Softwared — Custom Software That Runs Your Business",
     description:
       "Custom software development for web applications, mobile applications, e-commerce, and Flutter.",
-    images: ["/softwared-logo.svg"],
+    images: ["/softwared_logo.png"],
   },
   icons: {
     icon: [{ url: "/file.svg", type: "image/svg+xml" }],

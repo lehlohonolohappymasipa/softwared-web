@@ -172,17 +172,29 @@ export default function Home() {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur">
-        <div className="container-page flex items-center justify-between py-2">
-          <a href="#top" className="flex items-center gap-2">
+        <div className="container-page flex min-h-[clamp(4rem,7vw,5.75rem)] items-center justify-between py-0">
+          <a href="#top" className="flex items-center gap-0">
             {/* Replace this file with your provided logo if you want the exact mark */}
-            <Image
-              src="/softwared-logo.svg"
-              alt="Softwared"
-              width={440}
-              height={120}
-              priority
-              className="h-16 w-auto md:h-20"
-            />
+            <span className="brand-logo" aria-label="Softwared">
+              <Image
+                src="/softwared_logo.png"
+                alt="Softwared"
+                width={440}
+                height={120}
+                priority
+                sizes="(min-width: 768px) 520px, 440px"
+                className="brand-logo__img brand-logo__img--light"
+              />
+              <Image
+                src="/softwared_logo_darkmode.png"
+                alt="Softwared"
+                width={440}
+                height={120}
+                priority
+                sizes="(min-width: 768px) 520px, 440px"
+                className="brand-logo__img brand-logo__img--dark"
+              />
+            </span>
           </a>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">

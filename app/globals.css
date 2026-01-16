@@ -118,6 +118,49 @@ html {
   padding-inline: var(--space-2);
 }
 
+/* Brand logo swap (light/dark) */
+.brand-logo {
+  display: inline-block;
+  position: relative;
+  /* Header slot height (smaller than the logo so the header stays compact) */
+  height: clamp(4rem, 7vw, 5.75rem);
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.brand-logo__img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: clamp(8rem, 14vw, 11.5rem);
+  width: auto;
+  max-width: min(90vw, 840px);
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.18));
+}
+
+@media (prefers-color-scheme: dark) {
+  .brand-logo__img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
+  }
+}
+
+.brand-logo__img--dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .brand-logo__img--light {
+    display: none;
+  }
+  .brand-logo__img--dark {
+    display: block;
+  }
+}
+
 .surface {
   background: var(--surface);
   border: 1px solid var(--border);

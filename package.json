@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "node scripts/dev-clean.mjs",
     "build": "next build",
+    "build:clean": "node scripts/build-clean.mjs",
     "export": "next build",
     "start": "npx serve@latest out",
     "lint": "eslint"
