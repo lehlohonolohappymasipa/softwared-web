@@ -172,7 +172,7 @@ export default function Home() {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur">
-        <div className="container-page flex min-h-[clamp(4rem,7vw,5.75rem)] items-center justify-center py-0 md:justify-between">
+        <div className="container-page flex h-[clamp(4rem,7vw,5.75rem)] items-center justify-center overflow-visible py-0 md:justify-between">
           <a href="#top" className="mx-auto flex items-center gap-0 md:mx-0">
             {/* Replace this file with your provided logo if you want the exact mark */}
             <span className="brand-logo" aria-label="Softwared">
@@ -674,31 +674,7 @@ export default function Home() {
 
       {/* Mobile bottom navigation (acts like a footer bar) */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color:var(--background)]/90 backdrop-blur md:hidden">
-        <div className="container-page flex h-14 items-center justify-between">
-          <nav aria-label="Mobile" className="flex items-center gap-6 text-sm font-semibold">
-            <a
-              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
-              href="#benefits"
-              onClick={closeMobileMenu}
-            >
-              Benefits
-            </a>
-            <a
-              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
-              href="#process"
-              onClick={closeMobileMenu}
-            >
-              Process
-            </a>
-            <a
-              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
-              href="#faq"
-              onClick={closeMobileMenu}
-            >
-              FAQ
-            </a>
-          </nav>
-
+        <div className="container-page flex h-14 items-center justify-center">
           <details ref={mobileMenuRef} className="relative">
             <summary
               className="btn btn-secondary btn-sm list-none"
