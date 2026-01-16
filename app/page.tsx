@@ -172,8 +172,8 @@ export default function Home() {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur">
-        <div className="container-page flex min-h-[clamp(4rem,7vw,5.75rem)] items-center justify-between py-0">
-          <a href="#top" className="flex items-center gap-0">
+        <div className="container-page flex min-h-[clamp(4rem,7vw,5.75rem)] items-center justify-center py-0 md:justify-between">
+          <a href="#top" className="mx-auto flex items-center gap-0 md:mx-0">
             {/* Replace this file with your provided logo if you want the exact mark */}
             <span className="brand-logo" aria-label="Softwared">
               <Image
@@ -218,7 +218,7 @@ export default function Home() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-2 md:flex">
             <a
               className="btn btn-primary btn-sm hidden md:inline-flex"
               href={BOOKING_URL}
@@ -229,88 +229,11 @@ export default function Home() {
               Book a discovery call
               <span aria-hidden>→</span>
             </a>
-
-            <details ref={mobileMenuRef} className="md:hidden">
-              <summary
-                className="btn btn-secondary btn-sm list-none"
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
-              >
-                <span className="sr-only">Menu</span>
-                {isMobileMenuOpen ? (
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M4 6h16" />
-                    <path d="M4 12h16" />
-                    <path d="M4 18h16" />
-                  </svg>
-                )}
-              </summary>
-              <div className="absolute right-4 mt-2 w-[min(92vw,340px)] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)] shadow-[var(--shadow)]">
-                <div className="flex flex-col p-4">
-                  <a
-                    className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                    href="#benefits"
-                    onClick={closeMobileMenu}
-                  >
-                    Benefits
-                  </a>
-                  <a
-                    className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                    href="#process"
-                    onClick={closeMobileMenu}
-                  >
-                    Process
-                  </a>
-                  <a
-                    className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                    href="#faq"
-                    onClick={closeMobileMenu}
-                  >
-                    FAQ
-                  </a>
-                  <div className="p-2">
-                    <a
-                      className="btn btn-primary w-full"
-                      href={BOOKING_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={closeMobileMenu}
-                    >
-                      Book a discovery call
-                      <span aria-hidden>→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </details>
           </div>
         </div>
       </header>
 
-      <main id="main" className="scroll-mt-20 md:scroll-mt-24">
+      <main id="main" className="scroll-mt-20 pb-28 md:scroll-mt-24 md:pb-0">
         {/* Hero */}
         <section id="top" className="relative overflow-hidden bg-grid scroll-mt-20 md:scroll-mt-24">
           <div className="pointer-events-none absolute inset-0">
@@ -748,6 +671,113 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Mobile bottom navigation (acts like a footer bar) */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color:var(--background)]/90 backdrop-blur md:hidden">
+        <div className="container-page flex h-14 items-center justify-between">
+          <nav aria-label="Mobile" className="flex items-center gap-6 text-sm font-semibold">
+            <a
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
+              href="#benefits"
+              onClick={closeMobileMenu}
+            >
+              Benefits
+            </a>
+            <a
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
+              href="#process"
+              onClick={closeMobileMenu}
+            >
+              Process
+            </a>
+            <a
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)]"
+              href="#faq"
+              onClick={closeMobileMenu}
+            >
+              FAQ
+            </a>
+          </nav>
+
+          <details ref={mobileMenuRef} className="relative">
+            <summary
+              className="btn btn-secondary btn-sm list-none"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className="sr-only">Menu</span>
+              {isMobileMenuOpen ? (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 6h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 18h16" />
+                </svg>
+              )}
+            </summary>
+
+            <div className="absolute bottom-[calc(100%+0.5rem)] right-0 w-[min(92vw,340px)] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)] shadow-[var(--shadow)]">
+              <div className="flex flex-col p-4">
+                <a
+                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
+                  href="#benefits"
+                  onClick={closeMobileMenu}
+                >
+                  Benefits
+                </a>
+                <a
+                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
+                  href="#process"
+                  onClick={closeMobileMenu}
+                >
+                  Process
+                </a>
+                <a
+                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
+                  href="#faq"
+                  onClick={closeMobileMenu}
+                >
+                  FAQ
+                </a>
+                <div className="p-2">
+                  <a
+                    className="btn btn-primary w-full"
+                    href={BOOKING_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={closeMobileMenu}
+                  >
+                    Book a discovery call
+                    <span aria-hidden>→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
     </div>
   );
 }
