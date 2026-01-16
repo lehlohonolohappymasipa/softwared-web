@@ -120,13 +120,15 @@ html {
 
 /* Brand logo swap (light/dark) */
 .brand-logo {
-  display: inline-block;
+  display: inline-grid;
+  align-items: center;
   line-height: 0;
   padding: 0;
   margin: 0;
 }
 
 .brand-logo__img {
+  grid-area: 1 / 1;
   height: clamp(8rem, 14vw, 11.5rem);
   width: auto;
   max-width: min(90vw, 840px);
@@ -197,7 +199,6 @@ html {
 .btn-sm {
   padding: var(--space-1) var(--space-2);
   font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .btn:active {
@@ -205,9 +206,9 @@ html {
 }
 
 .btn-primary {
-  background-image: linear-gradient(180deg, var(--accent-2), var(--accent));
-  color: white;
-  box-shadow: 0 12px 28px rgba(59, 160, 255, 0.25);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: 1px solid transparent;
+  color: #ffffff;
 }
 
 .btn-primary:hover {

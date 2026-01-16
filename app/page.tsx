@@ -674,7 +674,7 @@ export default function Home() {
 
       {/* Mobile bottom navigation (acts like a footer bar) */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color:var(--background)]/90 backdrop-blur md:hidden">
-        <div className="container-page flex h-14 items-center justify-center">
+        <div className="container-page flex h-14 items-center justify-end">
           <details ref={mobileMenuRef} className="relative">
             <summary
               className="btn btn-secondary btn-sm list-none"
