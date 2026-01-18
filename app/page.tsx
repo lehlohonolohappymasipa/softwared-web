@@ -1,10 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const BOOKING_URL = "https://calendly.com/masipalh/30min";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const logoLight = `${basePath}/softwared_logo.png`;
+  const logoDark = `${basePath}/softwared_logo_darkmode.png`;
 
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -176,24 +178,19 @@ export default function Home() {
           <a href="#top" className="mx-auto flex items-center gap-0 md:mx-0">
             {/* Replace this file with your provided logo if you want the exact mark */}
             <span className="brand-logo" aria-label="Softwared">
-              <Image
-                src="/softwared_logo.png"
-                alt="Softwared"
-                width={440}
-                height={120}
-                priority
-                sizes="(min-width: 768px) 520px, 440px"
-                className="brand-logo__img brand-logo__img--light"
-              />
-              <Image
-                src="/softwared_logo_darkmode.png"
-                alt="Softwared"
-                width={440}
-                height={120}
-                priority
-                sizes="(min-width: 768px) 520px, 440px"
-                className="brand-logo__img brand-logo__img--dark"
-              />
+              <picture>
+                <source srcSet={logoDark} media="(prefers-color-scheme: dark)" />
+                <img
+                  src={logoLight}
+                  alt="Softwared"
+                  width={440}
+                  height={120}
+                  className="brand-logo__img"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </picture>
             </span>
           </a>
 

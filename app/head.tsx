@@ -23,6 +23,15 @@ export default function Head() {
 
   return (
     <>
+      <link rel="preload" as="image" href="/softwared_logo.png" fetchPriority="high" />
+      <link
+        rel="preload"
+        as="image"
+        href="/softwared_logo_darkmode.png"
+        media="(prefers-color-scheme: dark)"
+        fetchPriority="high"
+      />
+
       {/* Helps Google understand your brand/services (no UI impact) */}
       <script
         type="application/ld+json"
