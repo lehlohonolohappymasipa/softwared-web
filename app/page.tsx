@@ -200,10 +200,10 @@ export default function Home() {
       </a>
 
       <header
-        className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-200 ${
+        className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,border-color,box-shadow,backdrop-filter,opacity,transform] duration-300 ease-out ${
           isScrolled
-            ? "border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur"
-            : "border-transparent bg-transparent"
+            ? "border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur opacity-100 shadow-[0_10px_30px_rgba(2,6,23,0.10)]"
+            : "border-transparent bg-transparent opacity-100 shadow-none"
         }`}
       >
         <div className="container-page flex h-[clamp(4rem,7vw,5.75rem)] items-center justify-center overflow-visible py-0 md:justify-between">
@@ -271,7 +271,7 @@ export default function Home() {
           </div>
 
           <div
-            className="container-page relative pb-16 pt-[calc(clamp(4rem,7vw,5.75rem)+4rem)] sm:pb-20 sm:pt-[calc(clamp(4rem,7vw,5.75rem)+5rem)] lg:pb-24 lg:pt-[calc(clamp(4rem,7vw,5.75rem)+6rem)]"
+            className="container-page relative pb-16 pt-[calc(clamp(4rem,7vw,5.75rem)+2.5rem)] sm:pb-20 sm:pt-[calc(clamp(4rem,7vw,5.75rem)+3.25rem)] lg:pb-24 lg:pt-[calc(clamp(4rem,7vw,5.75rem)+4rem)]"
             data-reveal-group
           >
             <div className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
