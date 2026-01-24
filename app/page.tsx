@@ -10,6 +10,7 @@ export default function Home() {
 
   const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMobileMenu = () => {
     const el = mobileMenuRef.current;
@@ -26,6 +27,31 @@ export default function Home() {
     onToggle();
 
     return () => el.removeEventListener("toggle", onToggle);
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    const threshold = 16;
+
+    const update = () => {
+      setIsScrolled(window.scrollY > threshold);
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   useEffect(() => {
@@ -173,7 +199,13 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur">
+      <header
+        className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-200 ${
+          isScrolled
+            ? "border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur"
+            : "border-transparent bg-transparent"
+        }`}
+      >
         <div className="container-page flex h-[clamp(4rem,7vw,5.75rem)] items-center justify-center overflow-visible py-0 md:justify-between">
           <a href="#top" className="mx-auto flex items-center gap-0 md:mx-0">
             {/* Replace this file with your provided logo if you want the exact mark */}
@@ -238,7 +270,10 @@ export default function Home() {
             <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-[color:var(--accent)]/22 blur-3xl" />
           </div>
 
-          <div className="container-page relative py-16 sm:py-20 lg:py-24" data-reveal-group>
+          <div
+            className="container-page relative pb-16 pt-[calc(clamp(4rem,7vw,5.75rem)+4rem)] sm:pb-20 sm:pt-[calc(clamp(4rem,7vw,5.75rem)+5rem)] lg:pb-24 lg:pt-[calc(clamp(4rem,7vw,5.75rem)+6rem)]"
+            data-reveal-group
+          >
             <div className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
               <div className="col-span-4 md:col-span-8 lg:col-span-7">
                 <div className="pill w-fit">
