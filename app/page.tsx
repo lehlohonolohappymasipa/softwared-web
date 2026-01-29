@@ -1,5 +1,6 @@
 import ClientEffects from "./components/ClientEffects";
 import SiteHeader from "./components/SiteHeader";
+import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 import { getBasePath } from "./lib/site";
 
 const BOOKING_URL = "https://calendly.com/masipalh/30min";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <ClientEffects />
+      <WhatsAppFloatingButton />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
