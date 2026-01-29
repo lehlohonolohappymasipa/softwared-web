@@ -25,6 +25,9 @@ const monoFallback = Inter({
 export const metadata: Metadata = {
   // Include basePath so relative metadata URLs resolve correctly for both Netlify and static subpaths.
   metadataBase: new URL(getAbsoluteUrl("/")),
+  verification: {
+    google: "ZzVtjdeOh5_xQNqPYYLfo95uj9F4hHfXaOcpZ_quaFI",
+  },
   title: {
     default: "softwared — Custom Software Development (Web, Mobile, Automation)",
     template: "%s | softwared",

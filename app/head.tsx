@@ -89,10 +89,6 @@ export default function Head() {
       />
 
       {/* Useful if you forget to set metadataBase; also helps some crawlers */}
-      <meta
-        name="google-site-verification"
-        content="ZzVtjdeOh5_xQNqPYYLfo95uj9F4hHfXaOcpZ_quaFI"
-      />
       <meta property="og:site_name" content="Softwared" />
       <meta property="og:url" content={getAbsoluteUrl("/")} />
       <meta name="twitter:domain" content={new URL(siteUrl).hostname} />
