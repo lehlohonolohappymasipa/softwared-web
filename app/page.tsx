@@ -1,197 +1,17 @@
-"use client";
+import ClientEffects from "./components/ClientEffects";
+import SiteHeader from "./components/SiteHeader";
+import { getBasePath } from "./lib/site";
 
-import { useEffect, useRef, useState } from "react";
+const BOOKING_URL = "https://calendly.com/masipalh/30min";
 
 export default function Home() {
-  const BOOKING_URL = "https://calendly.com/masipalh/30min";
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const logoLight = `${basePath}/softwared_logo.png`;
-  const logoDark = `${basePath}/softwared_logo_darkmode.png`;
-
-  const mobileMenuRef = useRef<HTMLDetailsElement | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const closeMobileMenu = () => {
-    const el = mobileMenuRef.current;
-    if (el) el.open = false;
-    setIsMobileMenuOpen(false);
-  };
-
-  useEffect(() => {
-    const el = mobileMenuRef.current;
-    if (!el) return;
-
-    const onToggle = () => setIsMobileMenuOpen(el.open);
-    el.addEventListener("toggle", onToggle);
-    onToggle();
-
-    return () => el.removeEventListener("toggle", onToggle);
-  }, []);
-
-  useEffect(() => {
-    let raf = 0;
-    const threshold = 16;
-
-    const update = () => {
-      setIsScrolled(window.scrollY > threshold);
-    };
-
-    const onScroll = () => {
-      if (raf) return;
-      raf = window.requestAnimationFrame(() => {
-        raf = 0;
-        update();
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (raf) window.cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) return;
-
-    const onPointerDown = (event: MouseEvent | TouchEvent) => {
-      const el = mobileMenuRef.current;
-      if (!el) return;
-      const target = event.target as Node | null;
-      if (target && !el.contains(target)) {
-        closeMobileMenu();
-      }
-    };
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeMobileMenu();
-    };
-
-    // Capture phase so we close even if other handlers stop propagation.
-    document.addEventListener("mousedown", onPointerDown, true);
-    document.addEventListener("touchstart", onPointerDown, true);
-    document.addEventListener("keydown", onKeyDown, true);
-
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown, true);
-      document.removeEventListener("touchstart", onPointerDown, true);
-      document.removeEventListener("keydown", onKeyDown, true);
-    };
-  }, [isMobileMenuOpen]);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReducedMotion) return;
-
-    // Apply a gentle stagger inside explicit groups.
-    const groups = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal-group]"),
-    );
-    for (const group of groups) {
-      const items = Array.from(
-        group.querySelectorAll<HTMLElement>("[data-reveal]"),
-      );
-      items.forEach((el, idx) => {
-        const d = Math.min(idx * 70, 420);
-        el.style.setProperty("--d", `${d}ms`);
-      });
-    }
-
-    const els = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal]"),
-    );
-    if (!els.length) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add("in");
-            io.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "80px 0px" },
-    );
-
-    for (const el of els) io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-    if (prefersReducedMotion || isCoarse) return;
-
-    const tiltEls = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-tilt]"),
-    );
-    if (!tiltEls.length) return;
-
-    const cleanups: Array<() => void> = [];
-
-    for (const el of tiltEls) {
-      let raf = 0;
-      let lastX = 0;
-      let lastY = 0;
-
-      const onMove = (event: PointerEvent) => {
-        if (event.pointerType !== "mouse") return;
-        lastX = event.clientX;
-        lastY = event.clientY;
-
-        if (raf) return;
-        raf = window.requestAnimationFrame(() => {
-          raf = 0;
-          const rect = el.getBoundingClientRect();
-          const px = Math.min(Math.max((lastX - rect.left) / rect.width, 0), 1);
-          const py = Math.min(Math.max((lastY - rect.top) / rect.height, 0), 1);
-
-          const max = 7; // degrees
-          const ry = (px - 0.5) * (max * 2);
-          const rx = (0.5 - py) * (max * 2);
-
-          el.style.setProperty("--rx", `${rx.toFixed(2)}deg`);
-          el.style.setProperty("--ry", `${ry.toFixed(2)}deg`);
-          el.style.setProperty("--px", `${(px * 100).toFixed(1)}%`);
-          el.style.setProperty("--py", `${(py * 100).toFixed(1)}%`);
-          el.classList.add("is-tilting");
-        });
-      };
-
-      const onLeave = () => {
-        if (raf) {
-          window.cancelAnimationFrame(raf);
-          raf = 0;
-        }
-        el.style.setProperty("--rx", `0deg`);
-        el.style.setProperty("--ry", `0deg`);
-        el.classList.remove("is-tilting");
-      };
-
-      el.addEventListener("pointermove", onMove);
-      el.addEventListener("pointerleave", onLeave);
-
-      cleanups.push(() => {
-        el.removeEventListener("pointermove", onMove);
-        el.removeEventListener("pointerleave", onLeave);
-      });
-    }
-
-    return () => {
-      for (const fn of cleanups) fn();
-    };
-  }, []);
+  const basePath = getBasePath();
+  const logoLightSrc = `${basePath}/softwared_logo.png`;
+  const logoDarkSrc = `${basePath}/softwared_logo_darkmode.png`;
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <ClientEffects />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
@@ -199,68 +19,11 @@ export default function Home() {
         Skip to content
       </a>
 
-      <header
-        className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,border-color,box-shadow,backdrop-filter,opacity,transform] duration-300 ease-out ${
-          isScrolled
-            ? "border-[var(--border)] bg-[color:var(--background)]/80 backdrop-blur opacity-100 shadow-[0_10px_30px_rgba(2,6,23,0.10)]"
-            : "border-transparent bg-transparent opacity-100 shadow-none"
-        }`}
-      >
-        <div className="container-page flex h-[clamp(4rem,7vw,5.75rem)] items-center justify-center overflow-visible py-0 md:justify-between">
-          <a href="#top" className="mx-auto flex items-center gap-0 md:mx-0">
-            {/* Replace this file with your provided logo if you want the exact mark */}
-            <span className="brand-logo" aria-label="Softwared">
-              <picture>
-                <source srcSet={logoDark} media="(prefers-color-scheme: dark)" />
-                <img
-                  src={logoLight}
-                  alt="Softwared"
-                  width={440}
-                  height={120}
-                  className="brand-logo__img"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                />
-              </picture>
-            </span>
-          </a>
-
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-            <a
-              className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--foreground)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-              href="#benefits"
-            >
-              Benefits
-            </a>
-            <a
-              className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--foreground)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-              href="#process"
-            >
-              Process
-            </a>
-            <a
-              className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--foreground)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-              href="#faq"
-            >
-              FAQ
-            </a>
-          </nav>
-
-          <div className="hidden items-center gap-2 md:flex">
-            <a
-              className="btn btn-primary btn-sm hidden md:inline-flex"
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Book a discovery call"
-            >
-              Book a discovery call
-              <span aria-hidden>→</span>
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader
+        bookingUrl={BOOKING_URL}
+        logoLightSrc={logoLightSrc}
+        logoDarkSrc={logoDarkSrc}
+      />
 
       <main id="main" className="scroll-mt-20 pb-28 md:scroll-mt-24 md:pb-0">
         {/* Hero */}
@@ -285,16 +48,16 @@ export default function Home() {
                   className="mt-6 font-[family-name:var(--font-display)] text-[length:var(--step-5)] leading-[var(--lh-tight)] tracking-[var(--tracking-tight)] reveal"
                   data-reveal
                 >
-                  Custom software that runs your business for you.
+                  Custom software development that runs your business for you.
                 </h1>
 
                 <p
                   className="mt-6 max-w-2xl text-[length:var(--step-1)] leading-[1.45] text-[color:var(--muted)] reveal"
                   data-reveal
                 >
-                  We design and develop tailored mobile and web applications that automate core business processes,
-                  help you serve more customers, and reduce operational costs without the overhead of a large
-                  development team.
+                  softwared builds tailored web applications, mobile apps, and business automation software that
+                  streamlines operations, helps you serve more customers, and reduces manual work without the
+                  overhead of a large development team.
                 </p>
                 <p
                   className="mt-2 max-w-2xl text-[length:var(--step-0)] text-[color:var(--muted-2)] reveal"
@@ -703,89 +466,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Mobile bottom navigation (acts like a footer bar) */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[color:var(--background)]/90 backdrop-blur md:hidden">
-        <div className="container-page flex h-14 items-center justify-end">
-          <details ref={mobileMenuRef} className="relative">
-            <summary
-              className="btn btn-secondary btn-sm list-none"
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
-            >
-              <span className="sr-only">Menu</span>
-              {isMobileMenuOpen ? (
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 6 6 18" />
-                  <path d="M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M4 6h16" />
-                  <path d="M4 12h16" />
-                  <path d="M4 18h16" />
-                </svg>
-              )}
-            </summary>
-
-            <div className="absolute bottom-[calc(100%+0.5rem)] right-0 w-[min(92vw,340px)] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)] shadow-[var(--shadow)]">
-              <div className="flex flex-col p-4">
-                <a
-                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                  href="#benefits"
-                  onClick={closeMobileMenu}
-                >
-                  Benefits
-                </a>
-                <a
-                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                  href="#process"
-                  onClick={closeMobileMenu}
-                >
-                  Process
-                </a>
-                <a
-                  className="rounded-xl px-4 py-4 text-sm font-semibold hover:bg-black/[0.03] dark:hover:bg-white/[0.06]"
-                  href="#faq"
-                  onClick={closeMobileMenu}
-                >
-                  FAQ
-                </a>
-                <div className="p-2">
-                  <a
-                    className="btn btn-primary w-full"
-                    href={BOOKING_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={closeMobileMenu}
-                  >
-                    Book a discovery call
-                    <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
     </div>
   );
 }

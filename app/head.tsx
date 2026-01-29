@@ -2,22 +2,72 @@ import { getAbsoluteUrl, getSiteUrl } from "./lib/site";
 
 export default function Head() {
   const siteUrl = getSiteUrl();
+  const linkedInUrl = (process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "").trim();
+
+  const orgId = `${getAbsoluteUrl("/")}#org`;
+  const websiteId = `${getAbsoluteUrl("/")}#website`;
+  const logoUrl = getAbsoluteUrl("/softwared_logo.png");
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Softwared",
-    url: getAbsoluteUrl("/"),
-    logo: getAbsoluteUrl("/softwared_logo.png"),
-    description:
-      "Custom software development for web applications, mobile applications, e-commerce solutions, and Flutter apps.",
-    knowsAbout: [
-      "software",
-      "software development",
-      "web applications",
-      "mobile applications",
-      "e-commerce",
-      "Flutter",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: "softwared",
+        legalName: "softwared",
+        url: getAbsoluteUrl("/"),
+        logo: {
+          "@type": "ImageObject",
+          url: logoUrl,
+        },
+        description:
+          "Custom software development studio building web applications, mobile apps, and business automation software.",
+        ...(linkedInUrl ? { sameAs: [linkedInUrl] } : {}),
+        knowsAbout: [
+          "custom software development",
+          "web application development",
+          "mobile app development",
+          "business automation software",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: getAbsoluteUrl("/"),
+        name: "softwared",
+        publisher: { "@id": orgId },
+      },
+      {
+        "@type": "Service",
+        "@id": `${getAbsoluteUrl("/")}#service-custom-software`,
+        name: "Custom software development",
+        serviceType: "Custom software development",
+        provider: { "@id": orgId },
+        areaServed: "Worldwide",
+        description:
+          "Design and build tailored software that automates workflows and supports business operations.",
+      },
+      {
+        "@type": "Service",
+        "@id": `${getAbsoluteUrl("/")}#service-web-apps`,
+        name: "Web application development",
+        serviceType: "Web application development",
+        provider: { "@id": orgId },
+        areaServed: "Worldwide",
+        description:
+          "Build modern web applications for customers and internal teams, including dashboards and portals.",
+      },
+      {
+        "@type": "Service",
+        "@id": `${getAbsoluteUrl("/")}#service-mobile-apps`,
+        name: "Mobile app development",
+        serviceType: "Mobile app development",
+        provider: { "@id": orgId },
+        areaServed: "Worldwide",
+        description:
+          "Develop mobile applications that work smoothly across devices and integrate with business systems.",
+      },
     ],
   };
 

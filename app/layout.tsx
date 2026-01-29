@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-import { getSiteUrl } from "./lib/site";
+import { getAbsoluteUrl } from "./lib/site";
 
 const body = Inter({
   variable: "--font-body",
@@ -23,19 +23,25 @@ const monoFallback = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  // Include basePath so relative metadata URLs resolve correctly for both Netlify and static subpaths.
+  metadataBase: new URL(getAbsoluteUrl("/")),
   title: {
-    default: "Softwared — Custom Software That Runs Your Business",
-    template: "%s | Softwared",
+    default: "softwared — Custom Software Development (Web, Mobile, Automation)",
+    template: "%s | softwared",
   },
   description:
-    "We design and develop tailored software: web applications, mobile applications, e-commerce solutions, and Flutter apps that automate core business processes, help you serve more customers, and reduce operational costs.",
+    "softwared is a custom software development studio building web applications, mobile apps, and business automation software that streamlines operations and reduces manual work.",
   keywords: [
+    "softwared",
     "software",
     "software development",
     "custom software",
+    "custom software development",
     "web applications",
+    "web application development",
     "mobile applications",
+    "mobile app development",
+    "business automation software",
     "e-commerce",
     "ecommerce",
     "Flutter",
@@ -58,10 +64,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "Softwared — Custom Software That Runs Your Business",
+    title: "softwared — Custom Software Development (Web, Mobile, Automation)",
     description:
       "Custom software development for web applications, mobile applications, e-commerce, and Flutter.",
-    siteName: "Softwared",
+    siteName: "softwared",
     locale: "en_US",
     images: [
       {
@@ -74,13 +80,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Softwared — Custom Software That Runs Your Business",
+    title: "softwared — Custom Software Development (Web, Mobile, Automation)",
     description:
       "Custom software development for web applications, mobile applications, e-commerce, and Flutter.",
     images: ["/softwared_logo.png"],
   },
   icons: {
-    icon: [{ url: "/file.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/softwared-logo.svg", type: "image/svg+xml" }],
   },
 };
 

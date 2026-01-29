@@ -6,4 +6,7 @@
 [build.environment]
   NEXT_PUBLIC_SITE_URL = "https://softwared.netlify.app"
 
+  # Optional: helps tie the brand entity to your LinkedIn business page via schema.org (app/head.tsx)
+  # NEXT_PUBLIC_LINKEDIN_URL = "https://www.linkedin.com/company/<your-page>/"
+
 # If you later add a custom domain, update NEXT_PUBLIC_SITE_URL accordingly.
