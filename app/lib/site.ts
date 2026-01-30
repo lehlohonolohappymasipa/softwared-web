@@ -9,9 +9,27 @@ function normalizeBasePath(input: string | undefined): string {
 
 function normalizeSiteUrl(input: string | undefined): string {
   const raw = (input ?? "").trim();
-  if (!raw) return "http://localhost:3000";
-  if (!/^https?:\/\//i.test(raw)) return `https://${raw}`;
-  return raw;
+
+  const inferred =
+    raw ||
+    // Netlify (production + previews)
+    (process.env.URL ?? "").trim() ||
+    (process.env.DEPLOY_PRIME_URL ?? "").trim() ||
+    // Vercel
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+    // Cloudflare Pages
+    (process.env.CF_PAGES_URL ?? "").trim();
+
+  if (!inferred) {
+    // Client-side fallback (useful for local previews).
+    if (typeof window !== "undefined") return window.location.origin;
+
+    // Local/dev fallback only when nothing else is available.
+    return "http://localhost:3000";
+  }
+
+  if (!/^https?:\/\//i.test(inferred)) return `https://${inferred}`;
+  return inferred;
 }
 
 export function getBasePath(): string {

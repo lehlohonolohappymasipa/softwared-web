@@ -3,6 +3,11 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { getAbsoluteUrl } from "./lib/site";
+import { BOOKING_URL } from "./lib/links";
+
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
+import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 
 const body = Inter({
   variable: "--font-body",
@@ -29,30 +34,25 @@ export const metadata: Metadata = {
     google: "ZzVtjdeOh5_xQNqPYYLfo95uj9F4hHfXaOcpZ_quaFI",
   },
   title: {
-    default: "softwared — Custom Software Development (Web, Mobile, Automation)",
+    default: "softwared — Technology shaped for impact.",
     template: "%s | softwared",
   },
   description:
-    "softwared is a custom software development studio building web applications, mobile apps, and business automation software that streamlines operations and reduces manual work.",
+    "Custom software development for service businesses, startups, and ops teams. We build internal systems, web and mobile apps, and business automation that reduces admin and errors.",
   keywords: [
     "softwared",
     "software",
     "software development",
     "custom software",
     "custom software development",
+    "internal systems",
+    "business automation",
     "web applications",
     "web application development",
     "mobile applications",
     "mobile app development",
     "business automation software",
-    "e-commerce",
-    "ecommerce",
-    "Flutter",
-    "Flutter app development",
   ],
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -66,10 +66,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "/",
-    title: "softwared — Custom Software Development (Web, Mobile, Automation)",
+    title: "softwared — Technology shaped for impact.",
     description:
-      "Custom software development for web applications, mobile applications, e-commerce, and Flutter.",
+      "Custom software development, business automation, internal systems, and web and mobile apps. Built to reduce admin and errors.",
     siteName: "softwared",
     locale: "en_US",
     images: [
@@ -77,15 +76,15 @@ export const metadata: Metadata = {
         url: "/softwared_logo.png",
         width: 440,
         height: 120,
-        alt: "Softwared",
+        alt: "softwared logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "softwared — Custom Software Development (Web, Mobile, Automation)",
+    title: "softwared — Technology shaped for impact.",
     description:
-      "Custom software development for web applications, mobile applications, e-commerce, and Flutter.",
+      "Custom software development, business automation, internal systems, and web and mobile apps. Built to reduce admin and errors.",
     images: ["/softwared_logo.png"],
   },
   icons: {
@@ -103,7 +102,16 @@ export default function RootLayout({
       <body
         className={`${body.variable} ${display.variable} ${monoFallback.variable} antialiased`}
       >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80]"
+        >
+          Skip to content
+        </a>
+        <SiteHeader bookingUrl={BOOKING_URL} />
+        <WhatsAppFloatingButton />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

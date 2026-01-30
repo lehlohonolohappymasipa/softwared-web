@@ -6,7 +6,9 @@
 [build.environment]
   NEXT_PUBLIC_SITE_URL = "https://softwared.netlify.app"
 
-  # Optional: helps tie the brand entity to your LinkedIn business page via schema.org (app/head.tsx)
-  # NEXT_PUBLIC_LINKEDIN_URL = "https://www.linkedin.com/company/<your-page>/"
+  NEXT_PUBLIC_LINKEDIN_URL = "https://www.linkedin.com/company/111125043/"
+
+  # Optional override (defaults to masipah@icloud.com in the Contact page)
+  # NEXT_PUBLIC_CONTACT_EMAIL = "masipah@icloud.com"
 
 # If you later add a custom domain, update NEXT_PUBLIC_SITE_URL accordingly.

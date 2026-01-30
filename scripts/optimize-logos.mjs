@@ -1,7 +1,6 @@
 import { rename, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import process from "node:process";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
@@ -55,7 +54,6 @@ async function optimizePng(fileUrl, maxWidth) {
 
 const results = [];
 for (const t of targets) {
-  // eslint-disable-next-line no-await-in-loop
   results.push(await optimizePng(t.in, t.maxWidth));
 }
 
