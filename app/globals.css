@@ -200,13 +200,12 @@ html {
 }
 
 .brand-logo__img {
-  /* Smaller layout box so the header can be compact; the visual size comes from scale() */
-  height: clamp(1.45rem, 3.2vw, 2.2rem);
+  /* Size the logo directly (avoid transform-upscaling that can look blurry on small screens). */
+  height: clamp(2.6rem, 4.2vw, 3.25rem);
   width: auto;
   max-width: min(70vw, 520px);
   object-fit: contain;
-  transform: scale(5.8);
-  transform-origin: left center;
+  transform: none;
   filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.18));
 }
 
