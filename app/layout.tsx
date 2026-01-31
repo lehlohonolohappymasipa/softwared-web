@@ -8,6 +8,7 @@ import { BOOKING_URL } from "./lib/links";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
+import JsonLd from "./components/JsonLd";
 
 const body = Inter({
   variable: "--font-body",
@@ -97,8 +98,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // FAQ data for structured data (must match FAQ section content)
+  const faqs = [
+    {
+      question: "What do you build?",
+      answer:
+        "Custom software for internal systems, business automation, dashboards, and web + mobile apps. We focus on operational software that reduces admin and eliminates errors.",
+    },
+    {
+      question: "How long does the first version take?",
+      answer:
+        "Most first versions ship in 2–6 weeks. We keep scope tight so delivery stays predictable.",
+    },
+    {
+      question: "Do you integrate with existing tools?",
+      answer:
+        "Yes, where it reduces admin and mistakes. We connect tools and remove duplicate data entry.",
+    },
+    {
+      question: "What do you need from us?",
+      answer:
+        "One point of contact, access to the current workflow, and fast feedback during the build.",
+    },
+    {
+      question: "How much does it cost?",
+      answer:
+        "Pricing depends on scope and complexity. We'll give you a clear quote after the discovery call once we understand the workflow.",
+    },
+  ];
+
   return (
     <html lang="en">
+      <head>
+        <JsonLd faqs={faqs} />
+      </head>
       <body
         className={`${body.variable} ${display.variable} ${monoFallback.variable} antialiased`}
       >

@@ -1,22 +1,33 @@
-# Website images
+# Website Images
 
-This folder contains the minimal set of images used on the website.
+This folder contains images for the softwared landing page.
 
-## Files used
+## Current Images (in use)
 
-- `hero-bg.webp` — hero background image (subtle, high quality) with text overlay.
-- `benefit-dashboard.webp` — supports dashboards/visibility messaging.
-- `benefit-automation.webp` — supports automation/integrations messaging.
-- `benefit-mobile-web.webp` — supports mobile + web delivery messaging.
+| File                      | Section                | Purpose                    | Recommended Size  |
+| ------------------------- | ---------------------- | -------------------------- | ----------------- |
+| `hero-bg-light.webp`      | Hero (#top)            | Background image           | 2400×1350, <400KB |
+| `benefit-dashboard.webp`  | Solutions (#solutions) | Dashboard UI example       | 1200×800, <200KB  |
+| `benefit-automation.webp` | Solutions (#solutions) | Automation workflow visual | 1200×800, <200KB  |
+| `benefit-mobile-web.webp` | Process (#process)     | Mobile + web mockup        | 1400×600, <200KB  |
 
-## TODO (recommended)
+## Images Needed
 
-These images are lightweight placeholders generated locally to keep the site fast and avoid external downloads.
-Replace them with real, high-quality images that match the message.
+| File                      | Section              | Purpose                        | Recommended Size |
+| ------------------------- | -------------------- | ------------------------------ | ---------------- |
+| `before-spreadsheet.webp` | Problems (#problems) | Messy spreadsheet/chaos visual | 1200×900, <200KB |
 
-Recommended specs:
+The Problems section currently uses a placeholder. Add this image when ready.
 
-- Hero background: 2000–2600px wide, WebP or AVIF, aim 200–600KB.
-- Supporting images: ~1200–1600px wide, WebP or AVIF, aim 120–400KB each.
+## Unused (can delete)
+
+- `hero-bg.webp` — Dark mode hero background (no longer needed, light mode only)
+
+## Image Guidelines
+
+- **Format:** WebP for best compression
+- **Max width:** 2400px for hero, 1400px for section images
+- **Alt text:** Descriptive but natural (already set in code)
+- **Optimization:** Run through sharp or squoosh before committing
 
 If you replace any image, keep the same filename to avoid code changes.

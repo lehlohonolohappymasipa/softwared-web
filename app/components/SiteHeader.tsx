@@ -22,8 +22,7 @@ export default function SiteHeader({ bookingUrl }: Props) {
   }, []);
 
   const basePath = getBasePath();
-  const logoLightSrc = `${basePath}/softwared_logo.png`;
-  const logoDarkSrc = `${basePath}/softwared_logo_darkmode.png`;
+  const logoSrc = `${basePath}/softwared_logo.png`;
 
   const closeMobileMenu = () => {
     mobileNavRef.current?.removeAttribute("open");
@@ -38,46 +37,44 @@ export default function SiteHeader({ bookingUrl }: Props) {
       }`}
     >
       <div className="container-header flex h-[clamp(4.25rem,7vw,5.75rem)] items-center justify-between gap-3">
-        <Link href="/" className="relative z-10 flex items-center" aria-label="softwared home">
+        <Link href="/#top" className="relative z-10 flex items-center" aria-label="softwared home">
           <span className="brand-logo" aria-hidden>
             <Image
-              src={logoLightSrc}
+              src={logoSrc}
               alt="softwared"
               width={440}
               height={120}
               priority
-              className="brand-logo__img brand-logo__img--light"
-            />
-            <Image
-              src={logoDarkSrc}
-              alt="softwared"
-              width={440}
-              height={120}
-              priority
-              className="brand-logo__img brand-logo__img--dark"
+              className="brand-logo__img"
             />
           </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
-          <Link
+          <a
             className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-            href="/services/"
+            href="#problems"
           >
-            Services
-          </Link>
-          <Link
+            Problems
+          </a>
+          <a
             className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-            href="/process/"
+            href="#solutions"
+          >
+            Solutions
+          </a>
+          <a
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
+            href="#process"
           >
             Process
-          </Link>
-          <Link
+          </a>
+          <a
             className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
-            href="/contact/"
+            href="#contact"
           >
-            Contact Us
-          </Link>
+            Contact
+          </a>
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
@@ -125,27 +122,41 @@ export default function SiteHeader({ bookingUrl }: Props) {
           </summary>
           <div className="absolute right-0 mt-3 min-w-[15.5rem] max-w-[18rem] rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-2 shadow-[var(--shadow)]">
             <nav aria-label="Mobile" className="flex flex-col">
-              <Link
-                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04] dark:hover:bg-white/[0.08]"
-                href="/services/"
+              <a
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04]"
+                href="#problems"
                 onClick={closeMobileMenu}
               >
-                Services
-              </Link>
-              <Link
-                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04] dark:hover:bg-white/[0.08]"
-                href="/process/"
+                Problems
+              </a>
+              <a
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04]"
+                href="#solutions"
+                onClick={closeMobileMenu}
+              >
+                Solutions
+              </a>
+              <a
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04]"
+                href="#process"
                 onClick={closeMobileMenu}
               >
                 Process
-              </Link>
-              <Link
-                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04] dark:hover:bg-white/[0.08]"
-                href="/contact/"
+              </a>
+              <a
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04]"
+                href="#faq"
                 onClick={closeMobileMenu}
               >
-                Contact Us
-              </Link>
+                FAQ
+              </a>
+              <a
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-[color:var(--text)] hover:bg-black/[0.04]"
+                href="#contact"
+                onClick={closeMobileMenu}
+              >
+                Contact
+              </a>
 
               <div className="my-2 border-t border-[color:var(--border)]" />
 

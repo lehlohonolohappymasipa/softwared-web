@@ -78,27 +78,6 @@
   --font-mono: var(--font-code);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0d12;
-    --surface: rgba(255, 255, 255, 0.06);
-    --text: rgba(255, 255, 255, 0.92);
-    --muted: rgba(255, 255, 255, 0.72);
-    --muted-2: rgba(255, 255, 255, 0.56);
-    --border: rgba(255, 255, 255, 0.14);
-    --primary: rgba(255, 255, 255, 0.92);
-    --primary-foreground: #0b0d12;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 14px 35px rgba(0, 0, 0, 0.55);
-    --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.45), 0 18px 45px rgba(0, 0, 0, 0.62);
-
-    /* aliases */
-    --background: var(--bg);
-    --foreground: var(--text);
-    --accent: var(--ring);
-    --surface-2: rgba(59, 130, 246, 0.16);
-  }
-}
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -150,82 +129,28 @@ html {
   transform-origin: left center;
 }
 
-/* Hero theme helpers (swap assets + keep text readable in light mode) */
-.hero-bg__img--light,
-.hero-bg__overlay--light {
-  display: block;
-}
-
-.hero-bg__img--dark,
-.hero-bg__overlay--dark {
-  display: none;
-}
-
+/* Hero theme (light mode only) */
 .hero-theme {
-  --hero-text: #ffffff;
-  --hero-muted: rgba(255, 255, 255, 0.85);
-  --hero-soft: rgba(255, 255, 255, 0.80);
-  --hero-chip-bg: rgba(255, 255, 255, 0.10);
-  --hero-chip-border: rgba(255, 255, 255, 0.20);
-  --hero-card-bg: rgba(0, 0, 0, 0.25);
-  --hero-card-border: rgba(255, 255, 255, 0.20);
-  --hero-card-item-bg: rgba(255, 255, 255, 0.10);
-  --hero-card-item-border: rgba(255, 255, 255, 0.20);
-}
-
-@media (prefers-color-scheme: dark) {
-  .hero-bg__img--light,
-  .hero-bg__overlay--light {
-    display: none;
-  }
-
-  .hero-bg__img--dark,
-  .hero-bg__overlay--dark {
-    display: block;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .hero-theme {
-    --hero-text: var(--text);
-    --hero-muted: color-mix(in srgb, var(--text) 82%, transparent);
-    --hero-soft: color-mix(in srgb, var(--text) 72%, transparent);
-    --hero-chip-bg: rgba(255, 255, 255, 0.78);
-    --hero-chip-border: rgba(11, 13, 18, 0.14);
-    --hero-card-bg: rgba(255, 255, 255, 0.82);
-    --hero-card-border: rgba(11, 13, 18, 0.14);
-    --hero-card-item-bg: rgba(255, 255, 255, 0.70);
-    --hero-card-item-border: rgba(11, 13, 18, 0.12);
-  }
+  --hero-text: var(--text);
+  --hero-muted: color-mix(in srgb, var(--text) 82%, transparent);
+  --hero-soft: color-mix(in srgb, var(--text) 72%, transparent);
+  --hero-chip-bg: rgba(255, 255, 255, 0.78);
+  --hero-chip-border: rgba(11, 13, 18, 0.14);
+  --hero-card-bg: rgba(255, 255, 255, 0.82);
+  --hero-card-border: rgba(11, 13, 18, 0.14);
+  --hero-card-item-bg: rgba(255, 255, 255, 0.70);
+  --hero-card-item-border: rgba(11, 13, 18, 0.12);
 }
 
 .brand-logo__img {
-  /* Size the logo directly (avoid transform-upscaling that can look blurry on small screens). */
-  height: clamp(2.6rem, 4.2vw, 3.25rem);
+  /* Smaller layout box so the header can be compact; the visual size comes from scale() */
+  height: clamp(1.45rem, 3.2vw, 2.2rem);
   width: auto;
   max-width: min(70vw, 520px);
   object-fit: contain;
-  transform: none;
+  transform: scale(5.8);
+  transform-origin: left center;
   filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.18));
-}
-
-/* Logo visibility (use OS theme, not Tailwind's `dark:` class) */
-.brand-logo__img--light {
-  display: block;
-}
-
-.brand-logo__img--dark {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .brand-logo__img--light {
-    display: none;
-  }
-
-  .brand-logo__img--dark {
-    display: block;
-  }
 }
 
 /* Mobile menu icon toggle (no JS) */
@@ -243,12 +168,6 @@ html {
 
 summary::-webkit-details-marker {
   display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .brand-logo__img {
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
-  }
 }
 
 .surface {
@@ -269,12 +188,6 @@ summary::-webkit-details-marker {
 .card:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-2);
-}
-
-@media (prefers-color-scheme: dark) {
-  .card {
-    background: rgba(255, 255, 255, 0.06);
-  }
 }
 
 .btn {
@@ -318,12 +231,6 @@ summary::-webkit-details-marker {
 
 .btn-secondary:hover {
   background: rgba(11, 13, 18, 0.04);
-}
-
-@media (prefers-color-scheme: dark) {
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
 }
 
 .pill {
@@ -397,13 +304,6 @@ summary::-webkit-details-marker {
 
 .premium-panel::before {
   display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .premium-panel {
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: var(--shadow);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
