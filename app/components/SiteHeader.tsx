@@ -73,7 +73,7 @@ export default function SiteHeader({ bookingUrl }: Props) {
             className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
             href="#contact"
           >
-            Contact
+            Contact Us
           </a>
         </nav>
 
@@ -155,7 +155,7 @@ export default function SiteHeader({ bookingUrl }: Props) {
                 href="#contact"
                 onClick={closeMobileMenu}
               >
-                Contact
+                Contact Us
               </a>
 
               <div className="my-2 border-t border-[color:var(--border)]" />

@@ -15,7 +15,7 @@ type Props = {
 export default function LandingPage({ bookingUrl }: Props) {
   const whatsAppHref = getWhatsAppHref();
   const contactEmail =
-    (process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "masipah@icloud.com").trim();
+    (process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "admin@softwared.co.za").trim();
   const linkedInUrl = "https://www.linkedin.com/company/111125043/";
 
   return (

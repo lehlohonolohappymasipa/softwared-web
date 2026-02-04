@@ -4,11 +4,11 @@
 
 # Optional but recommended: make sure the canonical/sitemap URLs are correct during build.
 [build.environment]
-  NEXT_PUBLIC_SITE_URL = "https://softwared.netlify.app"
+  NEXT_PUBLIC_SITE_URL = "https://softwared.co.za"
 
   NEXT_PUBLIC_LINKEDIN_URL = "https://www.linkedin.com/company/111125043/"
 
   # Optional override (defaults to masipah@icloud.com in the Contact page)
   # NEXT_PUBLIC_CONTACT_EMAIL = "masipah@icloud.com"
 
-# If you later add a custom domain, update NEXT_PUBLIC_SITE_URL accordingly.
+# If you later change domains, update NEXT_PUBLIC_SITE_URL accordingly.

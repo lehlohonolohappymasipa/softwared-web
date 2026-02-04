@@ -31,7 +31,7 @@ This project is configured to export as a fully static site.
 
 This site generates `robots.txt`, `sitemap.xml`, canonical URLs, and social previews from your site URL.
 
-- Set `NEXT_PUBLIC_SITE_URL` (recommended for production). For this site: `https://softwared.netlify.app`
+- Set `NEXT_PUBLIC_SITE_URL` (recommended for production). For this site: `https://softwared.co.za`
 - If you deploy as a GitHub Pages project site, set either:
   - `NEXT_PUBLIC_SITE_URL=https://username.github.io` and `NEXT_PUBLIC_BASE_PATH=/your-repo`, or
   - `NEXT_PUBLIC_SITE_URL=https://username.github.io/your-repo` (and leave `NEXT_PUBLIC_BASE_PATH` unset)

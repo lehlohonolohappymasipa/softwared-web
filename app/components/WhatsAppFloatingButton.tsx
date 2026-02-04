@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const WHATSAPP_PHONE_NUMBER = "27627152900";
-const PREFILLED_MESSAGE = "Hi softwared, I'm interested in your services";
+const PREFILLED_MESSAGE = "Hi Softwared, I am interested in your services";
 
 const encodedMessage = encodeURIComponent(PREFILLED_MESSAGE);
 const whatsappHref = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;

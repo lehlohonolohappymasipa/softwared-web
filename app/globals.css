@@ -67,8 +67,8 @@
 
   /* Fixed header sizing (used to offset top-of-page content without breaking hero backgrounds) */
   --header-h: clamp(4.25rem, 7vw, 5.75rem);
-  /* Slightly generous to avoid any overlap on small screens and when fonts render taller */
-  --header-offset: calc(var(--header-h) + var(--space-4));
+  /* Offset for hash-link scrolling (max tight: offset exactly by the fixed header height) */
+  --header-offset: var(--header-h);
 }
 
 @theme inline {

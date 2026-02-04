@@ -8,7 +8,7 @@ export default function SiteFooter() {
     { href: "#process", label: "Process" },
     { href: "#proof", label: "Proof" },
     { href: "#faq", label: "FAQ" },
-    { href: "#contact", label: "Contact" },
+    { href: "#contact", label: "Contact Us" },
   ];
 
   return (

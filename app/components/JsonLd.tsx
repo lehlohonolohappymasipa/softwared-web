@@ -24,7 +24,7 @@ export default function JsonLd({ faqs = [] }: Props) {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "masipah@icloud.com",
+      email: "admin@softwared.co.za",
     },
   };
 

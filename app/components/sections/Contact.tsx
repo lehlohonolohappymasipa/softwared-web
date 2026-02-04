@@ -9,7 +9,7 @@ type Props = {
 
 export default function Contact({
   bookingUrl,
-  contactEmail = "masipah@icloud.com",
+  contactEmail = "admin@softwared.co.za",
   linkedInUrl = "https://www.linkedin.com/company/111125043/",
   whatsAppHref,
 }: Props) {
