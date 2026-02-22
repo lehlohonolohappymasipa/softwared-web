@@ -52,25 +52,31 @@ export default function SiteHeader({ bookingUrl }: Props) {
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
           <a
-            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70 transition-colors duration-200"
             href="#problems"
           >
             Problems
           </a>
           <a
-            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70 transition-colors duration-200"
             href="#solutions"
           >
             Solutions
           </a>
           <a
-            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70 transition-colors duration-200"
             href="#process"
           >
             Process
           </a>
           <a
-            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70"
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70 transition-colors duration-200"
+            href="#faq"
+          >
+            FAQ
+          </a>
+          <a
+            className="text-sm font-semibold text-[color:var(--muted)] hover:text-[color:var(--text)] underline-offset-8 hover:underline decoration-[color:var(--accent)]/70 transition-colors duration-200"
             href="#contact"
           >
             Contact Us

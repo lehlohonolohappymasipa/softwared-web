@@ -44,7 +44,7 @@ export default function Hero({ bookingUrl }: Props) {
               Custom software that automates your core processes and reduces manual work.
             </h1>
 
-            <p className="mt-5 max-w-2xl text-[length:var(--step-1)] leading-[1.45] text-[color:var(--hero-muted)]">
+            <p className="mt-5 max-w-2xl text-[length:var(--step-1)] leading-[1.5] text-[color:var(--hero-muted)]">
               Internal systems, business automation, and web + mobile apps that
               free your team from repetitive admin so they can focus on what matters.
             </p>
@@ -110,9 +110,9 @@ export default function Hero({ bookingUrl }: Props) {
                     body: "Visibility into what's happening now, what's late, and what needs attention.",
                   },
                 ].map((item) => (
-                  <li key={item.title} className="card p-4">
+                  <li key={item.title} className="card p-5">
                     <p className="font-semibold">{item.title}</p>
-                    <p className="mt-2 text-[color:var(--muted)]">{item.body}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">{item.body}</p>
                   </li>
                 ))}
               </ul>

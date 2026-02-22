@@ -57,7 +57,7 @@ export default function Process() {
           <div className="lg:col-span-7">
             <ol className="space-y-4">
               {steps.map((step) => (
-                <li key={step.num} className="card p-6">
+                <li key={step.num} className="card p-5">
                   <div className="flex items-start gap-4">
                     <div
                       className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] text-sm font-semibold text-[color:var(--accent)]"
@@ -67,7 +67,7 @@ export default function Process() {
                     </div>
                     <div>
                       <p className="font-semibold">{step.title}</p>
-                      <p className="mt-2 text-sm text-[color:var(--muted)]">
+                      <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
                         {step.body}
                       </p>
                     </div>
@@ -76,9 +76,9 @@ export default function Process() {
               ))}
             </ol>
 
-            <div className="mt-8 rounded-3xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
+            <div className="mt-8 rounded-3xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
               <p className="text-sm font-semibold">What makes this work</p>
-              <ul className="mt-3 space-y-2 text-sm text-[color:var(--muted)]">
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[color:var(--muted)]">
                 <li>• One workflow at a time (tight scope = predictable delivery)</li>
                 <li>• Simple UI, minimal dependencies, accessible defaults</li>
                 <li>• Systems built for your process, not the other way around</li>

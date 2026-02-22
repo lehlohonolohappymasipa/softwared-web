@@ -14,12 +14,12 @@ export default function SectionHeading({ title, description, kicker }: Props) {
         </p>
       ) : null}
 
-      <h2 className="mt-0 font-[family-name:var(--font-display)] text-[length:var(--step-4)] leading-[var(--lh-tight)] tracking-[var(--tracking-tight)]">
+      <h2 className={`${kicker ? "mt-4" : "mt-0"} font-[family-name:var(--font-display)] text-[length:var(--step-4)] leading-[var(--lh-tight)] tracking-[var(--tracking-tight)]`}>
         {title}
       </h2>
 
       {description ? (
-        <p className="mt-4 text-[length:var(--step-1)] text-[color:var(--muted)]">
+        <p className="mt-4 max-w-prose-custom text-[length:var(--step-1)] leading-[var(--lh-snug)] text-[color:var(--muted)]">
           {description}
         </p>
       ) : null}

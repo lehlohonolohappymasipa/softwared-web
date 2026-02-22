@@ -10,25 +10,56 @@ export default function Solutions({ bookingUrl }: Props) {
     {
       title: "Internal systems",
       body: "Portals for requests, approvals, job tracking, and customer updates.",
+      icon: (
+        <svg className="h-5 w-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+        </svg>
+      ),
     },
     {
       title: "Business automation",
       body: "Automate scheduling, notifications, data validation, and handoffs.",
+      icon: (
+        <svg className="h-5 w-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M12 2v4" />
+          <path d="m16.2 7.8 2.9-2.9" />
+          <path d="M18 12h4" />
+          <path d="m16.2 16.2 2.9 2.9" />
+          <path d="M12 18v4" />
+          <path d="m4.9 19.1 2.9-2.9" />
+          <path d="M2 12h4" />
+          <path d="m4.9 4.9 2.9 2.9" />
+        </svg>
+      ),
     },
     {
       title: "Dashboards + reporting",
       body: "See what's in progress, what's late, and where the bottleneck is.",
+      icon: (
+        <svg className="h-5 w-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M3 3v18h18" />
+          <path d="m19 9-5 5-4-4-3 3" />
+        </svg>
+      ),
     },
     {
       title: "Web + mobile apps",
       body: "Apps for internal teams and customer portals, on any device.",
+      icon: (
+        <svg className="h-5 w-5 text-[color:var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <rect x="5" y="2" width="14" height="20" rx="2" />
+          <line x1="12" y1="18" x2="12.01" y2="18" />
+        </svg>
+      ),
     },
   ];
 
   return (
     <section
       id="solutions"
-      className="border-b border-[color:var(--border)] bg-[color:var(--bg)]"
+      className="border-b border-[color:var(--border)] bg-alt"
     >
       <div className="container-page py-14 sm:py-16">
         <SectionHeading
@@ -40,8 +71,9 @@ export default function Solutions({ bookingUrl }: Props) {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((item) => (
             <div key={item.title} className="card p-5">
+              <div className="mb-3">{item.icon}</div>
               <p className="font-semibold">{item.title}</p>
-              <p className="mt-2 text-sm text-[color:var(--muted)]">
+              <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
                 {item.body}
               </p>
             </div>

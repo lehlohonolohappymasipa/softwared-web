@@ -27,7 +27,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="border-b border-[color:var(--border)] bg-[color:var(--bg)]"
+      className="border-b border-[color:var(--border)] bg-alt"
     >
       <div className="container-page py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-12">
@@ -44,17 +44,17 @@ export default function FAQ() {
           <div className="lg:col-span-8">
             <div className="space-y-4">
               {faqs.map((item) => (
-                <details key={item.q} className="card p-6 group">
+                <details key={item.q} className="card p-5 group">
                   <summary className="cursor-pointer list-none font-semibold flex items-center justify-between gap-4">
                     <span>{item.q}</span>
                     <span
-                      className="shrink-0 text-[color:var(--muted)] transition-transform group-open:rotate-45"
+                      className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full border border-[color:var(--border)] text-[color:var(--muted)] transition-transform duration-200 group-open:rotate-45"
                       aria-hidden
                     >
                       +
                     </span>
                   </summary>
-                  <p className="mt-3 text-sm text-[color:var(--muted)]">
+                  <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted)]">
                     {item.a}
                   </p>
                 </details>

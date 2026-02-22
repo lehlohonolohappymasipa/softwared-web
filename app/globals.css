@@ -5,8 +5,8 @@
   --bg: #f7f7f5; /* off-white */
   --surface: #ffffff; /* pure white cards */
   --text: #0b0d12; /* near-black */
-  --muted: rgba(11, 13, 18, 0.72);
-  --muted-2: rgba(11, 13, 18, 0.56);
+  --muted: rgba(11, 13, 18, 0.78);
+  --muted-2: rgba(11, 13, 18, 0.64);
   --border: rgba(11, 13, 18, 0.12);
 
   /* Logo / brand colors (used subtly) */
@@ -30,6 +30,7 @@
   --accent-2: var(--brand-blue-2);
   --accent-ink: var(--primary);
   --surface-2: color-mix(in srgb, var(--brand-blue) 12%, transparent);
+  --bg-alt: #f1f1ef; /* subtle alternate section bg for visual rhythm */
 
   /* 8pt spacing system (multiples of 8) */
   --space-1: 8px;
@@ -339,5 +340,15 @@ details > summary::-webkit-details-marker {
 
 .muted-2 {
   color: var(--muted-2);
+}
+
+/* Readable prose max-width for body paragraphs */
+.max-w-prose-custom {
+  max-width: 42rem;
+}
+
+/* Alternate section background for visual rhythm (Use of Color) */
+.bg-alt {
+  background: var(--bg-alt);
 }
 

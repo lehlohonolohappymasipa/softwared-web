@@ -14,9 +14,9 @@ export default function Contact({
   whatsAppHref,
 }: Props) {
   return (
-    <section id="contact" className="bg-[color:var(--bg)]">
+    <section id="contact" className="border-b border-[color:var(--border)] bg-[color:var(--bg)]">
       <div className="container-page py-14 sm:py-16">
-        <div className="surface p-8 sm:p-10">
+        <div className="surface p-8 sm:p-10" style={{ background: 'color-mix(in srgb, var(--brand-blue) 4%, var(--surface))' }}>
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
             {/* Left: CTA */}
             <div>
